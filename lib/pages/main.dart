@@ -36,6 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: _selectednav,
         selectedItemColor: kPrimaryColor,
         unselectedItemColor: Colors.grey,
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Container(height: 350, color: Colors.black),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 25),
+            padding: const EdgeInsets.only(top: 40,right: 20,left: 20),
             child: CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
@@ -158,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount: 2,
                     mainAxisExtent: 300,
                     crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    mainAxisSpacing: 10,
                   ),
                 ),
               ],
