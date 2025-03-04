@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:untitled4/pages/item_details.dart';
-import 'package:untitled4/pages/models/Item_model.dart';
+import 'package:untitled4/pages/mainpage.dart';
 import 'package:untitled4/utils/Colors.dart';
-import 'package:untitled4/widgets/CustomColumn.dart';
-import 'package:untitled4/widgets/locationRow.dart';
-import 'package:untitled4/widgets/promoBanner.dart';
-import 'package:untitled4/widgets/categoryList.dart';
-import 'package:untitled4/widgets/itemGrid.dart';
-import 'package:untitled4/widgets/searchBar.dart';
 
 void main() => runApp(const MyApp());
 
@@ -16,15 +9,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int selctedscreen = 0;
-    List  screens = [
-      const MyHomePage(),
-      const Scaffold(),
-      const Scaffold(),
-      const Scaffold()
-    ];
-    return  MaterialApp(
-      home: screens[selctedscreen],
+    return  const MaterialApp(
+      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -40,6 +26,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectednav = 0;
   int selctedscreen = 0;
+  List screens = [
+    const Mainpage(),
+    const Scaffold(),
+    const Scaffold(),
+    const Scaffold()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -63,36 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(height: 330, color: Colors.black),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20,left: 20,top: 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Location", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold, fontSize: 15)),
-                      SizedBox(height: 10),
-                      Locationrow(),
-                      SizedBox(height: 30),
-                      Searchbar1(),
-                      SizedBox(height: 20),
-                      Promobanner(),
-                      SizedBox(height: 20),
-                      Categorylist(),
-                      SizedBox(height: 20),
-                      Itemgrid(),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      body: screens[selctedscreen]
     );
   }
 }
