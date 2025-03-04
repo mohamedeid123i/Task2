@@ -23,6 +23,7 @@ class _ItemDetailsState extends State<ItemDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

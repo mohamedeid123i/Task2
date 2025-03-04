@@ -16,8 +16,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(),
+    int selctedscreen = 0;
+    List  screens = [
+      const MyHomePage(),
+      const Scaffold(),
+      const Scaffold(),
+      const Scaffold()
+    ];
+    return  MaterialApp(
+      home: screens[selctedscreen],
       debugShowCheckedModeBanner: false,
     );
   }
@@ -32,6 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectednav = 0;
+  int selctedscreen = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectednav,
         selectedItemColor: kPrimaryColor,
         unselectedItemColor: Colors.grey,
-        onTap: (index) => setState(() => _selectednav = index),
+        onTap: (index) {
+          setState(() {
+            _selectednav = index;
+            selctedscreen = index; // Ensure correct variable name
+          });
+        },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_filled, size: 30), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.favorite_border, size: 30), label: ""),
